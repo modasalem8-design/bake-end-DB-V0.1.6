@@ -1,0 +1,16 @@
+; 1-عمل الاتصال 
+;2-عمل الربط بين قاعدة البيانات والسيرفر 
+3-عمل المستخدم وانشاء حساب وتسجيل دخول
+الملفات
+project
+'│
+├── server.js
+├── db.js
+│
+├── routes
+│   └── users.js
+│
+├── usersController
+│   └── useCon.js
+│
+└── package.json
