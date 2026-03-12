@@ -11,7 +11,7 @@ router.get('/user', async (req, res) => {
         const [rows] = await db.query("SELECT * FROM `log`")
         console.log("array")
         console.log(rows)
-        res.status(302).json(rows)
+        res.status(201).json(rows)
     } catch (error) {
         console.error("error in user.js", error)
         return res.status(501).json({ error: "error in user.js" })

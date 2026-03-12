@@ -13,7 +13,9 @@ app.use(cors())
 app.use(router)
 app.use(creat)
 const port =process.env.PORT||5000;
-
+app.get('/',async(req,res)=>{
+res.status(203).json("connect in server")})
+console.log("connect in server")
 // تشغيل سيرفر
 app.listen(port,()=>{
     console.log(`server in ${port}`);

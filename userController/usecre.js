@@ -10,8 +10,10 @@ creat.post('/create', async (req, res) => {
         const query = ("INSERT INTO `log`( `name`, `pass`) VALUES ('?','?')")
         const bcryptpass = bcrypt.hashSync(pass, 10);
         const [result] = await db.query(name, bcryptpass)
-        res.status(202).json()
+        res.status(202).json("connected in user")
 
-    } catch { }
+    } catch(error){
+        console.error("err in user")
+     }
 })
 export default creat;
