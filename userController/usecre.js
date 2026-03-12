@@ -7,12 +7,16 @@ create.use(express.json())
 create.post('/create', async (req, res) => {
     try {
         //  اتصال query
+       
         const { name, pass } = req.body;
-        const num = await db.query("SELECT * FROM `log` WHERE `name`=?", [name])
-        if (num.length > 0) {
-            res.status(301).json("the name is token for auther people")
+         if(!name||!pass){
+            return res.status(501).json("faild empaty name or pass")
         }
-        const query = ("INSERT INTO `log`( `name`, `pass`) VALUES ('?','?')")
+        const [num] = await db.query("SELECT * FROM `log` WHERE `name`=?", [name])
+        if (num.length > 0) {
+             return res.status(301).json("the name is token for auther people")
+        }
+        const query = ("INSERT INTO `log`( `name`, `pass`) VALUES (?,?)")
         const bcryptpass = bcrypt.hashSync(pass, 10);
         const [result] = await db.query(query, [name, bcryptpass])
         res.status(202).json("connected in user")
