@@ -5,7 +5,7 @@ import cors from 'cors'
 // import db from "./sql-DB/sql.js"
 import router from"./routs/user.js"
 import create from './userController/usecre.js';
-import samx from './userController/usersign.js';
+import sign from './userController/usersign.js';
 // import f from''
 //تعريفات
 const app = express();
@@ -17,7 +17,7 @@ app.use(router)
  //استدعائات انشاء الحساب
 app.use(create)
 //استدعائات تسجيل الدخول
-app.use(samx)
+app.use(sign)
 const port =process.env.PORT||5000;
 app.get('/',async(req,res)=>{
 res.status(203).json("connect in server")})

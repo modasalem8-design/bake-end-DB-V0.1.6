@@ -5,10 +5,11 @@ import express, { Router } from 'express'
 //تعريفات
 const router = express.Router()
 router.use(express.json())
+ 
 // الربط وجلب المستخدمين في المتصفح
 router.get('/user', async (req, res) => {
     try {
-       const [rows] = await db.query("SELECT * FROM `log`")
+     const [rows]= await db.query("SELECT * FROM `log`")
         console.log("array")
         console.log(rows)
         res.status(201).json(rows)
