@@ -6,24 +6,35 @@ const create = (express())
 create.use(express.json())
 create.post('/create', async (req, res) => {
     try {
-        //  اتصال query
-       
         const { name, pass } = req.body;
-         if(!name||!pass){
-            return res.status(501).json("faild empaty name or pass")
+
+        // 1. التأكد من البيانات
+        if (!name || !pass) {
+            return res.status(400).json("faild empty name or pass"); 
         }
-        const [num] = await db.query("SELECT * FROM `log` WHERE `name`=?", [name])
+
+        // 2. الكشف عن الاسم
+        const [num] = await db.query("SELECT * FROM `log` WHERE `name`=?", [name]);
+
+        // 3. المنطق الصحيح (لو الاسم موجود فعلاً)
         if (num.length > 0) {
-             return res.status(301).json("the name is token for auther people")
+            return res.status(409).json("this name is already taken");
+            // الـ return هنا بتمنع السيرفر إنه ينزل يعمل INSERT
         }
-        const query = ("INSERT INTO `log`( `name`, `pass`) VALUES (?,?)")
+
+        // 4. التشفير والحفظ
+        const query = "INSERT INTO `log` (`name`, `pass`) VALUES (?,?)";
         const bcryptpass = bcrypt.hashSync(pass, 10);
-        const [result] = await db.query(query, [name, bcryptpass])
-        res.status(202).json("connected in user")
-        //  ايجاد مستخدم 
+        
+        await db.query(query, [name, bcryptpass]);
+        
+        // 5. الرد النهائي في حالة النجاح
+        return res.status(201).json("Account created successfully");
+
     } catch (error) {
-        console.error("err in user")
-        res.status(501).json("err in user create account .js")
+        console.error("Database Error:", error);
+        // لازم return هنا كمان عشان لو حصل خطأ ما يحاولش يبعت رد تاني بره الـ catch
+        return res.status(500).json("Internal Server Error");
     }
-})
+});
 export default create;
