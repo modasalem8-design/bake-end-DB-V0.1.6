@@ -5,7 +5,14 @@ import bcrypt from "bcrypt";
 //تعريفات
 const sign = express();
 sign.use(express.json());
+//تجربة للسيرفر
+//هيتحذف
+sign.get("/sign", async (req, res) => {
+  res.json("good in sign")
+})
+//تكملة للسيرفر
 sign.post("/sign", async (req, res) => {
+
   try {
     const { name, pass } = req.body;
     if (!name || !pass) {
