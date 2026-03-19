@@ -22,6 +22,8 @@ create.post("/create", async (req, res) => {
     if (!pass || !name || name == "OR'1'='1'") {
       return res.status(401).json("invaild name or pass");
     }
+    if (name == pass)
+      return res.json({ error: "don't enter name = password" })
 
     const [nam] = await db.query("SELECT * FROM `log` WHERE `name`=? ", [name]);
 
@@ -32,14 +34,14 @@ create.post("/create", async (req, res) => {
     const bcryptpass = bcrypt.hashSync(pass, 10);
     const NU = await db.query(query, [name, bcryptpass]);
     const token = jwt.sign({
-      id: NU._id, role: NU.role
-    }, process.env.JWT_SECRET,
+      id: NU.insertID, role: "user"
+    }, process.env.SMS_SECRET,
       { expiresIn: '1h' })
-      console.log(token)
+    console.log(token)
 
     return res.json({
-      message: "account succesfull",
-      user: { id: NU.insertID, name,token}
+      message: "account successfull",
+      user: { id: NU.insertID, pass, name, token }
     });
   } catch (error) {
     console.error("error in create acount in user", error);

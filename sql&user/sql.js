@@ -7,4 +7,5 @@ const db = await createConnection({
    password: "",
    database: "ins"
 })
+console.log("connect in db")
 export default db 
