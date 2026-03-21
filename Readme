@@ -13,4 +13,11 @@ update post
 upload image
 )
 }
-ملحوظة كل اربع اصدارات
+المكتبات المستخدمة {
+express,
+joi,
+multer,
+mysql2,
+jsonwebtoken,
+dotenv
+}

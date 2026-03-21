@@ -10,6 +10,8 @@ import delp from '../post/delp.js';
 import cors from 'cors'
 import uppost from '../post/uppost.js';
 import upuse from '../userController/upuse.js';
+// import {UserSchema,PostSchema} from "../Middleware/user.schema.js";
+import { error } from "console";
 //تعريفات
 const app2 = (e())
 app2.use(e.json())
@@ -32,5 +34,8 @@ app2.use(delp)
 app2.use(uppost)
 //تحديث اسم المستخدم وكلمة المرور
 app2.use(upuse)
+// اكتشاف الاخطاء
+//تجربة
+// app2.use(schema)
 //استخراج
 export default app2

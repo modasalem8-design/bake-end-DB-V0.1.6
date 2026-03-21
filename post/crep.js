@@ -17,7 +17,6 @@ crep.post('/crep', async(req, res) => {
         res.json({ mesage: "create post susecfull" 
             ,send,com
         })
-        
     } catch(error){
         return res.json({error:"error in create post"})
      }
