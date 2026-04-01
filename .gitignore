@@ -1,0 +1,10 @@
+#الاسرار
+.env
+#الملفات المتنزلة
+node_modules/
+#xamp
+xammp/
+#الي تبعي
+map.tex
+#بيئة تشغيل bun
+bun.lock

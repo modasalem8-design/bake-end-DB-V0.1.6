@@ -1,4 +1,4 @@
-import Joi, { any } from "joi";
+import Joi from "joi";
 const UserSchema = (req, res, next) => {
   console.log(req.body)
   const schema = Joi.object({

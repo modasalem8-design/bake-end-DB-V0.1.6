@@ -27,12 +27,12 @@ function auth(req, res, next) {
 
 sign.get("/sign", auth, async (req, res) => {
   res.json("good in sign");
-  res.json(
-    sign.filter((post) => {
-      post.user === req.user.name;
+  // res.json(
+  //   sign.filter((post) => {
+  //     post.user === req.user.name;
     }),
-  );
-});
+//   );
+// });
 //تكملة للسيرفر
 sign.post("/sign", UserSchema, async (req, res) => {
   const { name, pass } = req.body;

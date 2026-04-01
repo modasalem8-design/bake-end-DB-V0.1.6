@@ -5,6 +5,7 @@ create acounte
 delete acounte
 sign in
 update user acounte
+token  for user
 )
 2-post(
 create post,
@@ -19,5 +20,10 @@ joi,
 multer,
 mysql2,
 jsonwebtoken,
-dotenv
+dotenv,
+helmet,
+//لسة متنفذش
+express-rate-limit,
+express-swagger-ui,
+swagger-jsdoc
 }

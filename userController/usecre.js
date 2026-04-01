@@ -44,7 +44,7 @@ create.post("/create", async (req, res) => {
 
   return res.json({
     message: "account successfull",
-    user: { id: NU.insertID, name, pass, token },
+    user: { id: NU.insertID, name, bcryptpass, token },
   });
 });
 export default create;

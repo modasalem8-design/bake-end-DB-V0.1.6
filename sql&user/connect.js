@@ -1,17 +1,17 @@
 //استدعائات الملفات
 import e from "express";
-import router from "../routs/user.js"
+import router from "../routs/user.js";
 import create from '../userController/usecre.js';
 import sign from '../userController/usersign.js';
 import up from '../routs/upload.js';
 import del from '../userController/del.js';
-import crep from "../post/crep.js"
+import crep from "../post/crep.js";
 import delp from '../post/delp.js';
-import cors from 'cors'
+import cors from 'cors';
 import uppost from '../post/uppost.js';
 import upuse from '../userController/upuse.js';
-// import {UserSchema,PostSchema} from "../Middleware/user.schema.js";
-import { error } from "console";
+import time from "../Middleware/user.time.js";
+
 //تعريفات
 const app2 = (e())
 app2.use(e.json())
@@ -34,6 +34,10 @@ app2.use(delp)
 app2.use(uppost)
 //تحديث اسم المستخدم وكلمة المرور
 app2.use(upuse)
+//الوقت في time
+app2.use(time)
+// حماية النظام
+
 // اكتشاف الاخطاء
 //تجربة
 // app2.use(schema)
