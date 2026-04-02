@@ -25,8 +25,11 @@ mysql2,
 jsonwebtoken,
 dotenv,
 helmet,
-//لسة متنفذش
 express-rate-limit,
-express-swagger-ui,
-swagger-jsdoc
+cors
 }
+Devolpment Roodmap:
+V0.0.1 :
+basic setup for express,
+V0.1.6 :
+security & doc (Current Stable)

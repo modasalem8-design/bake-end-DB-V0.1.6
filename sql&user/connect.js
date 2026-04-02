@@ -11,7 +11,6 @@ import cors from 'cors';
 import uppost from '../post/uppost.js';
 import upuse from '../userController/upuse.js';
 import time from "../Middleware/user.time.js";
-
 //تعريفات
 const app2 = (e())
 app2.use(e.json())
