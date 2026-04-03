@@ -19,7 +19,7 @@ const configX = {
   },
 };
 const dbConfig = process.env.DEVELOPMENT === "1" ? configX.development : configX.production
-console.log(dbConfig)
+ console.log(dbConfig)
 const db = await mysql.createConnection(dbConfig);
 
 console.log("✅ Connected to DB");

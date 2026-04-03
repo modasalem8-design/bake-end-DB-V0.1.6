@@ -46,7 +46,7 @@ sign.post("/sign", UserSchema, async (req, res) => {
     return res.status(502).json("error in pass");
   }
   const token = jwt.sign(
-    { id: ant.insertId, role: "user" },
+    { id: user.id, role: "user" },
     process.env.SMS_SECRET,
     { expiresIn: "1h" },
   );
